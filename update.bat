@@ -1,28 +1,24 @@
 @echo off
+cd /d C:\andreosh\CPP\Wind\_SmartGrid\githab
+
 echo ========================================
-echo Обновление репозитория RusFoxQt6
+echo    RusFoxQt6 Repository Update
 echo ========================================
 echo.
 
-REM Добавляем все изменения
 git add .
 
-REM Показываем, что будет отправлено
-echo Будут отправлены следующие изменения:
+echo Files to be committed:
 git status --short
 echo.
 
-REM Создаём коммит с датой и временем
 for /f "tokens=1-3 delims=.: " %%a in ('echo %time%') do set "mytime=%%a:%%b:%%c"
-set "commitmsg=Обновление от %date% %mytime%"
+git commit -m "Update from %date% %mytime%"
 
-git commit -m "%commitmsg%"
-
-REM Отправляем на GitHub
 git push origin master
 
 echo.
 echo ========================================
-echo Готово! Репозиторий обновлён.
+echo    Done!
 echo ========================================
 pause
